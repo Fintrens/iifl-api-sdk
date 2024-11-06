@@ -5,6 +5,7 @@ import com.sf.xts.api.sdk.FintrensConfigurationProvider;
 import com.sf.xts.api.sdk.interactive.SocketHandler;
 import com.sf.xts.api.sdk.interactive.XTSAPIInteractiveEvents;
 import com.sf.xts.api.sdk.interactive.cancelOrder.CancelOrderResponse;
+import com.sf.xts.api.sdk.interactive.orderbook.OrderBook;
 import com.sf.xts.api.sdk.interactive.orderhistory.OrderHistoryResponse;
 import com.sf.xts.api.sdk.interactive.placeOrder.PlaceOrderRequest;
 import com.sf.xts.api.sdk.interactive.placeOrder.PlaceOrderResponse;
@@ -131,6 +132,11 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		String data = requestHandler.processDeleteHttpRequest(new HttpDelete(interactiveURL + "/orders?appOrderID="+appOrderId),"CANCELORDER",authToken);
 		CancelOrderResponse cancelOrderResponse = gson.fromJson(data, CancelOrderResponse.class);
 		return cancelOrderResponse;
+	}
+	public OrderBook getOrderBook() throws APIException {
+		String data = requestHandler.processGettHttpRequest(new HttpGet(interactiveURL + orderBook),"ORDERBOOK",authToken);
+		OrderBook orderBookResponse = gson.fromJson(data, OrderBook.class);
+		return orderBookResponse;
 	}
 	public  boolean initializeListner(XTSAPIInteractiveEvents xtsapiInteractiveEvents) {
 		//Socket creating  for all the responses
