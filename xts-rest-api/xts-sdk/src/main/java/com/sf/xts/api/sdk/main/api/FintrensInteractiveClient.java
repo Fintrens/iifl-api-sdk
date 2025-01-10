@@ -103,6 +103,8 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		placeOrderJson.put("limitPrice", placeOrderRequest.limitPrice);
 		placeOrderJson.put("stopPrice", placeOrderRequest.stopPrice);
 		placeOrderJson.put("orderUniqueIdentifier", placeOrderRequest.orderUniqueIdentifier);
+		placeOrderJson.put("userId", placeOrderRequest.userId);
+		placeOrderJson.put("appKey", placeOrderRequest.appKey);
 		String data = requestHandler.processPostHttpRequest(new HttpPost(interactiveURL + orderBook),placeOrderJson,"PLACEORDER",authToken);
 		PlaceOrderResponse placeOrderResponse = gson.fromJson(data, PlaceOrderResponse.class);
 		logger.info("AppOrderId: " + placeOrderResponse.getResult().getAppOrderID().toString() +

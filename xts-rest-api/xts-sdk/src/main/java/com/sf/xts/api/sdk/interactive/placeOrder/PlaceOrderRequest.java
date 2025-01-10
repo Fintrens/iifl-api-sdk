@@ -13,5 +13,7 @@ public class PlaceOrderRequest {
 	public double stopPrice;
 	public String orderUniqueIdentifier;
 	public String productType;
+	public String appKey;
+	public String userId;
 	
 }
