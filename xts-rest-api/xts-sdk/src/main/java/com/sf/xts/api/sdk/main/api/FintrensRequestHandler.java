@@ -37,7 +37,7 @@ public class FintrensRequestHandler {
 			.setSocketTimeout(3000)
 			.build();
 	private HttpClient httpClient;
-	ObjectMapper objectMapper;
+	ObjectMapper objectMapper = new ObjectMapper();
 
 	public FintrensRequestHandler() {
 		this.httpClient = HttpClientBuilder.create()
@@ -45,7 +45,6 @@ public class FintrensRequestHandler {
 				.setDefaultRequestConfig(this.requestConfig)
 				.setMaxConnPerRoute(50)
 				.build();
-		this.objectMapper = new ObjectMapper();
 	}
 
 	public FintrensRequestHandler(String proxyHost, int proxyPort, String proxyUsername, String proxyPassword) {
@@ -62,7 +61,6 @@ public class FintrensRequestHandler {
 				);
 				clientBuilder.setDefaultCredentialsProvider(credsProvider);
 		this.httpClient = clientBuilder.build();
-		this.objectMapper = new ObjectMapper();
 	}
 
 	String processPostHttpHostRequest(HttpPost request, JSONObject data, String requestname) {
