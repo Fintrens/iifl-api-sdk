@@ -192,3 +192,4 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		return true;
 	}
 }
+
