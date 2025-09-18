@@ -53,6 +53,18 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		this.xtsapiInteractiveEvents = xtsapiInteractiveEvents;
 		requestHandler = new FintrensRequestHandler();
 	}
+
+	public FintrensInteractiveClient(String brokerName,XTSAPIInteractiveEvents xtsapiInteractiveEvents,String proxyHost,int proxyPort,String proxyType,String proxyUsername,String proxyPassword) throws IOException {
+		if(brokerName.equalsIgnoreCase("JAINAM")){
+			this.propFileName ="jainam-config.properties";
+		}else if(brokerName.equalsIgnoreCase("AJMERA")){
+			this.propFileName ="ajmera-config.properties";
+		}
+		loadConfiguration();
+		this.xtsapiInteractiveEvents = xtsapiInteractiveEvents;
+		requestHandler = new FintrensRequestHandler(proxyHost, proxyPort, proxyUsername, proxyPassword);
+	}
+
 	public void addListner(XTSAPIInteractiveEvents obj ) {
 		sh.addListner(obj);
 	}
