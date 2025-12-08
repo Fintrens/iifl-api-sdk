@@ -19,15 +19,15 @@ public class TestFintrensInteractive implements XTSAPIInteractiveEvents {
 	 */
 	public static void main(String[] args) {
 		try {
-			createSession("INTERACTIVE-SECRET-KEY","INTERACTIVE-SECRET-KEY","INTERACTIVE_COMMON_URL","INTERACTIVE-PORT");
+			createSession("INTERACTIVE-SECRET-KEY","INTERACTIVE-SECRET-KEY","INTERACTIVE_COMMON_URL","INTERACTIVE-PORT","INTERACTIVE_VERSION");
 		}catch (Exception e){
 		}
 	}
 
-	private static void createSession(String secretKey,String appKey,String commonUrl,String port) throws IOException, APIException {
+	private static void createSession(String secretKey,String appKey,String commonUrl,String port,String version) throws IOException, APIException {
 		FintrensInteractiveClient interactiveClient = null;
 		interactiveClient = new FintrensInteractiveClient(null,new TestFintrensInteractive());
-		interactiveClient.Login(secretKey, appKey,commonUrl,port); //FINDOC
+		interactiveClient.Login(secretKey, appKey,commonUrl,port,version); //FINDOC
 		if (InteractiveClient.authToken == null) {
 			logger.debug(".....Login error......");
 		}

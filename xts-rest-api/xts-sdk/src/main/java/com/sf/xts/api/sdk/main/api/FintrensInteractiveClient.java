@@ -69,7 +69,7 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		sh.addListner(obj);
 	}
 
-	public void HostLookUp(String commonUrl,String port) throws APIException {
+	public void HostLookUp(String commonUrl,String port,String version) throws APIException {
 		HttpPost request = new HttpPost(commonUrl+port + hostLookUp);
 		request.addHeader("content-type", "application/json");
 		JSONObject data = new JSONObject();
@@ -81,8 +81,8 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 		interactiveURL = (String)((JSONObject)jsonObject.get("result")).get("connectionString");
 	}
 
-	public String Login(String secretKey, String appKey,String commonUrl,String port) throws APIException, IOException {
-		this.HostLookUp(commonUrl,port);
+	public String Login(String secretKey, String appKey,String commonUrl,String port,String version) throws APIException, IOException {
+		this.HostLookUp(commonUrl,port,version);
 		HttpPost request = new HttpPost(interactiveURL + loginINT);
 		request.addHeader("content-type", "application/json");
 		JSONObject data = new JSONObject();
