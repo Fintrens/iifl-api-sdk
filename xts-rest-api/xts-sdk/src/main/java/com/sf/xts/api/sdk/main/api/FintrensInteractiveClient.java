@@ -168,6 +168,7 @@ public  class FintrensInteractiveClient extends FintrensConfigurationProvider {
 	}
 	/**
 	 * it cancel open order by providing appOrderId
+	 * @param appOrderId appOrderID for which trader want to modify the order
 	 * @return Map object of CancelOrderResponse
 	 * @throws APIException catch the exception in your implementation
 	 */
